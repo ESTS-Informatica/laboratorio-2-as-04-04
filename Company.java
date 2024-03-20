@@ -48,14 +48,37 @@ public class Company {
     }
 
     public boolean createSell(User client, User seller, Property property) {
-        return true; // dummy implementation
+    Sell sell = new Sell(client, seller, property);
+    return registerSell(sell);
     }
 
+
     public int calculateSellsOfTheYear(int year) {
-        return 0; // dummy implementation
+    int count = 0; 
+    for (Sell sell : sells) {
+        if (sell.getDate().getYear() == year) {
+            count++;
+        }
+    }
+    return count;
     }
 
     public String findSellerOfTheYear(int year) {
-        return null; // dummy implementation
+        int maxSells = 0;
+        String sellerOfTheYear = null;
+
+        for (User seller : sellers) {
+            int sellsOfSeller = 0;
+            for (Sell sell : sells) {
+                if (sell.getSeller().equals(seller) && sell.getDate().getYear() == year) {
+                    sellsOfSeller++;
+                }
+            }
+            if (sellsOfSeller > maxSells) {
+                maxSells = sellsOfSeller;
+                sellerOfTheYear = seller.getName();
+            }
+        }
+        return sellerOfTheYear;
     }
 }
