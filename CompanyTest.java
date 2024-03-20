@@ -14,7 +14,7 @@ public class CompanyTest {
     @Before
     public void setUp() {
         company = new Company();
-        // Registro de vendedores
+        
         seller1 = new User("Fernando Fernandes", "966777101", "fefe@remax.pt");
         seller2 = new User("Rodrigo Rodrigues", "966777152", "roro@remax.pt");
         company.registerSeller(seller1);

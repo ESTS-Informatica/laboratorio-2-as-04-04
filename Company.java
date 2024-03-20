@@ -52,7 +52,6 @@ public class Company {
     return registerSell(sell);
     }
 
-
     public int calculateSellsOfTheYear(int year) {
     int count = 0; 
     for (Sell sell : sells) {
